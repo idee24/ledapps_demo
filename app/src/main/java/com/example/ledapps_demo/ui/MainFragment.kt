@@ -17,6 +17,8 @@ import android.animation.ValueAnimator.AnimatorUpdateListener
 import android.graphics.Color
 import android.graphics.LightingColorFilter
 import androidx.lifecycle.lifecycleScope
+import com.example.ledapps_demo.zoomInImage
+import com.example.ledapps_demo.zoomOutImage
 import kotlinx.coroutines.delay
 
 
@@ -64,59 +66,22 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             when (key) {
                 HAIR_KEY -> {
                     initRecyclerView(hairCuts, selectedHair, HAIR_KEY)
-                    zoomInImage()
+                    zoomInImage(binding.displayImageView)
                 }
                 BEARD_KEY -> {
                     initRecyclerView(beards, selectedBeard, BEARD_KEY)
-                    zoomInImage()
+                    zoomInImage(binding.displayImageView)
                 }
                 CLOTHE_KEY -> {
                     initRecyclerView(clothes, selectedClothe, CLOTHE_KEY)
-                    zoomOutImage()
+                    zoomOutImage(binding.displayImageView)
                 }
             }
         }
 
     }
 
-    private fun zoomInImage() {
-        if (isFullDisplay) {
-            val anim = ValueAnimator.ofFloat(1f, 1.5f)
-            anim.duration = 1000
-            anim.addUpdateListener { animation ->
-                binding.displayImageView.scaleX = animation.animatedValue as Float
-                binding.displayImageView.scaleY = animation.animatedValue as Float
-            }
-            anim.start()
-            height = true
-            binding.displayImageView.animate()
-                .translationYBy(500f)
-                .setDuration(1000).start()
-            isFullDisplay = false
-        }
-    }
 
-    private var isFullDisplay = true
-    private var height = false
-
-    private fun zoomOutImage() {
-
-        val anim = ValueAnimator.ofFloat(1.5f, 1f)
-        anim.duration = 1000
-        anim.addUpdateListener { animation ->
-            binding.displayImageView.scaleX = animation.animatedValue as Float
-            binding.displayImageView.scaleY = animation.animatedValue as Float
-        }
-        anim.start()
-
-        if (height) {
-            binding.displayImageView.animate()
-                .translationYBy(-500f)
-                .setDuration(1000).start()
-            height = false
-        }
-        isFullDisplay = true
-    }
 
     private fun initRecyclerView(items: List<Int>, selectedIndex: Int, key: String) {
 
