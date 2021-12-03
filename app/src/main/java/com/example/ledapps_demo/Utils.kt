@@ -1,24 +1,25 @@
 package com.example.ledapps_demo
 
 import android.animation.ValueAnimator
+import android.widget.FrameLayout
 import android.widget.ImageView
 
 /**
  *@Created by Yerimah on 02/12/2021.
  */
 
-fun zoomOutImage(imageView: ImageView) {
+fun zoomOutImage(imageFrame: FrameLayout) {
 
     val anim = ValueAnimator.ofFloat(1.5f, 1f)
     anim.duration = 1000
     anim.addUpdateListener { animation ->
-        imageView.scaleX = animation.animatedValue as Float
-        imageView.scaleY = animation.animatedValue as Float
+        imageFrame.scaleX = animation.animatedValue as Float
+        imageFrame.scaleY = animation.animatedValue as Float
     }
     anim.start()
 
     if (height) {
-        imageView.animate()
+        imageFrame.animate()
             .translationYBy(-500f)
             .setDuration(1000).start()
         height = false
@@ -28,17 +29,17 @@ fun zoomOutImage(imageView: ImageView) {
 
 
 
-fun zoomInImage(imageView: ImageView) {
+fun zoomInImage(imageFrame: FrameLayout) {
     if (isFullDisplay) {
         val anim = ValueAnimator.ofFloat(1f, 1.5f)
         anim.duration = 1000
         anim.addUpdateListener { animation ->
-            imageView.scaleX = animation.animatedValue as Float
-            imageView.scaleY = animation.animatedValue as Float
+            imageFrame.scaleX = animation.animatedValue as Float
+            imageFrame.scaleY = animation.animatedValue as Float
         }
         anim.start()
         height = true
-        imageView.animate()
+        imageFrame.animate()
             .translationYBy(500f)
             .setDuration(1000).start()
         isFullDisplay = false

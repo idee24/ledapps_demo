@@ -16,6 +16,7 @@ import android.animation.ValueAnimator
 import android.animation.ValueAnimator.AnimatorUpdateListener
 import android.graphics.Color
 import android.graphics.LightingColorFilter
+import androidx.core.view.updatePadding
 import androidx.lifecycle.lifecycleScope
 import com.example.ledapps_demo.zoomInImage
 import com.example.ledapps_demo.zoomOutImage
@@ -66,15 +67,15 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             when (key) {
                 HAIR_KEY -> {
                     initRecyclerView(hairCuts, selectedHair, HAIR_KEY)
-                    zoomInImage(binding.displayImageView)
+                    zoomInImage(binding.characterFrame)
                 }
                 BEARD_KEY -> {
                     initRecyclerView(beards, selectedBeard, BEARD_KEY)
-                    zoomInImage(binding.displayImageView)
+                    zoomInImage(binding.characterFrame)
                 }
                 CLOTHE_KEY -> {
                     initRecyclerView(clothes, selectedClothe, CLOTHE_KEY)
-                    zoomOutImage(binding.displayImageView)
+                    zoomOutImage(binding.characterFrame)
                 }
             }
         }
@@ -90,11 +91,53 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         binding.categoryRecyclerView.layoutManager = layoutManager
         binding.categoryRecyclerView.adapter = CategoryAdapter(items, selectedIndex) {
             when (key) {
-                HAIR_KEY -> selectedHair = it
-                BEARD_KEY -> selectedBeard = it
-                CLOTHE_KEY -> selectedClothe = it
+                HAIR_KEY -> displayHair(it)
+                BEARD_KEY -> displayBeard(it)
+                CLOTHE_KEY -> displayClothe(it)
             }
         }
 
     }
+
+    private fun displayHair(selectedIndex: Int) {
+        when (selectedIndex) {
+            0 -> binding.hairImageView.setImageResource(0)
+            1 -> binding.hairImageView.setImageResource(R.drawable.images_hair_04)
+            2 -> binding.hairImageView.setImageResource(R.drawable.images_hair_03)
+            3 -> binding.hairImageView.setImageResource(R.drawable.images_hair_02)
+        }
+        selectedHair = selectedIndex
+    }
+
+    private fun displayBeard(selectedIndex: Int) {
+        when (selectedIndex) {
+            0 -> binding.beardImageView.setImageResource(0)
+            1 -> binding.beardImageView.setImageResource(R.drawable.images_beard_01)
+            2 -> binding.beardImageView.setImageResource(R.drawable.images_beard_02)
+        }
+        selectedBeard = selectedIndex
+    }
+
+    private fun displayClothe(selectedIndex: Int) {
+        when (selectedIndex) {
+            0 -> {
+                binding.clothesImageview.setImageResource(0)
+                binding.clothesImageview.updatePadding(top = 70)
+            }
+            1 -> {
+                binding.clothesImageview.setImageResource(R.drawable.images_clothes_tee) // +30dp
+                binding.clothesImageview.updatePadding(top = 80)
+            }
+            2 -> {
+                binding.clothesImageview.setImageResource(R.drawable.images_clothes_suit) // +20dp
+                binding.clothesImageview.updatePadding(top = 50)
+            }
+            3 -> {
+                binding.clothesImageview.setImageResource(R.drawable.images_clothes_jacket)
+                binding.clothesImageview.updatePadding(top = 10)
+            }
+        }
+        selectedClothe = selectedIndex
+    }
+
 }

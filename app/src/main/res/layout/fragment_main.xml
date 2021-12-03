@@ -3,16 +3,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@drawable/background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.MainFragment">
 
-    <ImageView
-        android:id="@+id/displayImageView"
-        android:src="@drawable/images_character"
-        android:contentDescription="@string/display_image"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <FrameLayout
+        android:id="@+id/characterFrame"
+        android:layout_gravity="bottom"
+        android:layout_width="400dp"
+        android:layout_height="700dp">
+
+        <ImageView
+            android:id="@+id/characterImageView"
+            android:src="@drawable/images_character"
+            android:layout_marginTop="20dp"
+            android:contentDescription="@string/display_image"
+            android:layout_width="400dp"
+            android:layout_gravity="center"
+            android:layout_height="700dp"/>
+
+        <ImageView
+            android:id="@+id/hairImageView"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="6dp"
+            android:contentDescription="@string/beard_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/beardImageView"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="90dp"
+            android:layout_marginStart="10dp"
+            android:contentDescription="@string/beard_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:id="@+id/clothesImageview"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="4dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/display_image"
+            android:layout_width="400dp"
+            android:layout_height="600dp"/>
+
+    </FrameLayout>
 
     <LinearLayout
         android:weightSum="1"
