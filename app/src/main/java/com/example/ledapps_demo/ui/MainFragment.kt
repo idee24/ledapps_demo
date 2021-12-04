@@ -125,11 +125,11 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 binding.clothesImageview.updatePadding(top = 70)
             }
             1 -> {
-                binding.clothesImageview.setImageResource(R.drawable.images_clothes_tee) // +30dp
+                binding.clothesImageview.setImageResource(R.drawable.images_clothes_tee)
                 binding.clothesImageview.updatePadding(top = 80)
             }
             2 -> {
-                binding.clothesImageview.setImageResource(R.drawable.images_clothes_suit) // +20dp
+                binding.clothesImageview.setImageResource(R.drawable.images_clothes_suit)
                 binding.clothesImageview.updatePadding(top = 50)
             }
             3 -> {
