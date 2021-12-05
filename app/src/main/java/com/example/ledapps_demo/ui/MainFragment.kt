@@ -121,20 +121,24 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun displayClothe(selectedIndex: Int) {
         when (selectedIndex) {
             0 -> {
-                binding.clothesImageview.setImageResource(0)
-                binding.clothesImageview.updatePadding(top = 70)
+                binding.teeImageview.visibility = View.GONE
+                binding.jacketImageview.visibility = View.GONE
+                binding.suitImageview.visibility = View.GONE
             }
             1 -> {
-                binding.clothesImageview.setImageResource(R.drawable.images_clothes_tee)
-                binding.clothesImageview.updatePadding(top = 80)
+                binding.teeImageview.visibility = View.VISIBLE
+                binding.jacketImageview.visibility = View.GONE
+                binding.suitImageview.visibility = View.GONE
             }
             2 -> {
-                binding.clothesImageview.setImageResource(R.drawable.images_clothes_suit)
-                binding.clothesImageview.updatePadding(top = 50)
+                binding.teeImageview.visibility = View.GONE
+                binding.jacketImageview.visibility = View.GONE
+                binding.suitImageview.visibility = View.VISIBLE
             }
             3 -> {
-                binding.clothesImageview.setImageResource(R.drawable.images_clothes_jacket)
-                binding.clothesImageview.updatePadding(top = 10)
+                binding.teeImageview.visibility = View.GONE
+                binding.jacketImageview.visibility = View.VISIBLE
+                binding.suitImageview.visibility = View.GONE
             }
         }
         selectedClothe = selectedIndex
